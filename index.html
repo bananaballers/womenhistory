@@ -611,7 +611,11 @@
   <div class="lb" id="lb">
     <div class="lb-in"><img id="lb-img" src="" alt="">
       <div class="lb-info">
+        <span class="lb-n" id="lb-n">Selected Work</span>
+        <h2 class="lb-t" id="lb-t"></h2>
+        <div class="lb-rule"></div>
         <p class="lb-d" id="lb-d"></p>
+        <div id="reflection-prompt"></div>
       </div>
     </div>
   </div>
@@ -643,12 +647,19 @@
         desc: "The Hebrew heroine Jael stands over the fallen Canaanite commander Sisera. Gentileschi renders the moment before the fatal act with quiet resolve—the figure monumentally still, her gaze remote and certain.",
         img: "https://lh3.googleusercontent.com/ci/AL18g_S2QyiFJfEUH86w4lSsY0gRzPMpTBmXkmiPMeQKrJR5-IB3Vxdkm87hbvXB_8x59pKaycvbrYHP"
       },
-
+      { title: "Esther before Ahasuerus", num: "V", desc: "The Jewish queen intercedes before the Persian king to save her people. Gentileschi captures the suspended breath of the moment—courage poised on the edge of collapse, rendered in sumptuous silks and hushed gold light.", img: "https://lh3.googleusercontent.com/ci/AL18g_Ra4Exr-wpA9-18p5eHdVtDMBoRigJjAAqhFvygF_K6p-IHqnIG2zH0eDZM7quzRE4iCFdK3A" },
       {
         title: "Susanna and the Elders",
         num: "III",
         desc: "Painted at just seventeen, this early masterwork is radical for its empathy: the Elders loom as conspirators, while Susanna recoils in genuine anguish. Gentileschi refuses the male gaze—she gives us the woman's experience.",
         img: "https://lh3.googleusercontent.com/ci/AL18g_RSIQAKwpB13UHAYdN0O63BpRcYiX3KPli_nb8VJ1IFP_FevkKSyquyUuPPdeaGuQjArK_f52iF"
+      },
+      { title: "Self-Portrait as La Pittura", num: "II", desc: "A masterpiece of conceptual daring: Gentileschi depicts herself as the very allegory of Painting—midway through an act of creation. It is one of the few self-portraits in history where the artist becomes the idea of art itself.", img: "https://lh3.googleusercontent.com/ci/AL18g_TEJPWDBGxQBn6xBZ_KDUJT-nIHnDO0MqwyjlkoyuJoQxAuKL6aC6lThGgL2a_J6zfKMxh7lOo" },
+      {
+        title: "An Allegory of Peace and the Arts",
+        num: "IV",
+        desc: "From about 1635 to 1638 the Florentine artist Orazio Gentileschi, helped by his daughter Artemisia, painted this ceiling for Queen Henrietta Maria for the Great Hall of the Queen’s House, Greenwich.",
+        img: "https://lh3.googleusercontent.com/ci/AL18g_TONxO4c55a0YYECnViTG9m1FHAEkeWdUz1mK9xqmj2gT9au7Hmsye8_NS0yGFJoElfY8YhxhQ=s1200"
       }
     ];
     function openLB(c) {
@@ -657,14 +668,14 @@
     function startReflection() {
       const c = PAINTINGS[Math.floor(Math.random() * PAINTINGS.length)];
       const l = document.getElementById('lb');
+      console.log(PAINTINGS.length);
       document.getElementById('lb-img').src = c.img;
+      document.getElementById('lb-t').textContent = c.title;
+      document.getElementById('lb-d').textContent = c.desc;
 
-      const promptText = "Say 3 things that illustrate women's power as shown in this work.";
-      document.getElementById('lb-d').innerHTML = `
+      const promptText = "Draw this!";
+      document.getElementById('reflection-prompt').innerHTML = `
       <div class="reflection-msg">${promptText}</div>
-      <div class="reflection-count">
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-      </div>
     `;
 
       l.classList.add('open');
